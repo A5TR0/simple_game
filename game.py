@@ -6,18 +6,21 @@ from gameplay import *
 
 class Game(object):
 
-    # do i have to init twice? for example, i inited in player and boss
     def __init__(self):
-        self.instructions = Instructions()
         self.player = Player()
         self.boss = Boss()
         self.gameplay = Gameplay()
 
+    def begin_game(self):
+        begin_game(self)
+
+    def situation(self, player_name, player_hp, player_weapon, boss_name, boss_hp):
+        situation(self, player_name, player_hp, player_weapon, boss_name, boss_hp)
 
 game = Game()
 
-game.instructions.begin_game()
+game.begin_game()
 game.player.stats()
 game.boss.stats(game.player.weapon)
-game.instructions.situation(game.player.name, game.player.hp, game.player.weapon, game.boss.name, game.boss.hp)
+game.situation(game.player.name, game.player.hp, game.player.weapon, game.boss.name, game.boss.hp)
 game.gameplay.battle(game.player.hp, game.player.weapon, game.boss.hp)
